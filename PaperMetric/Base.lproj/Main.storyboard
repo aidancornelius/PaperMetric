@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <plugIn identifier="com.apple.WebKit2IBPlugin" version="19529"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,7 +63,7 @@
                                     <items>
                                         <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
+                                                <segue destination="B8D-0N-5wS" kind="show" id="3Te-q9-s3S"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
@@ -657,13 +658,13 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Help" id="wpr-3q-Mcd">
+                            <menuItem title="Help" id="YZH-4y-5Tx" userLabel="Help">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+                                <menu key="submenu" title="Help" id="k0V-Ri-ds6">
                                     <items>
-                                        <menuItem title="PaperMetric Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="PaperMetric Help" image="questionmark.circle" catalog="system" keyEquivalent="?" id="9NC-Xm-Rtj">
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                                <segue destination="16N-gh-dDE" kind="show" id="nbJ-IK-gf7"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -685,7 +686,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="PaperMetric" separatorStyle="line" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="PaperMetric" separatorStyle="line" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="262" height="121"/>
@@ -700,12 +701,69 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6" y="165"/>
+            <point key="canvasLocation" x="-51" y="243"/>
         </scene>
-        <!--View Controller-->
+        <!--Window Controller-->
+        <scene sceneID="ydX-Y5-KFH">
+            <objects>
+                <windowController id="16N-gh-dDE" sceneMemberID="viewController">
+                    <window key="window" title="PaperMetric Help" separatorStyle="line" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" frameAutosaveName="" titlebarAppearsTransparent="YES" toolbarStyle="preference" id="fz6-Dn-4be">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="-2135" y="4" width="480" height="320"/>
+                        <rect key="screenRect" x="-2560" y="-458" width="2560" height="1415"/>
+                        <view key="contentView" id="HbR-VS-9Jg">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="16N-gh-dDE" id="6B5-OW-giB"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Te4-PG-rwh" kind="relationship" relationship="window.shadowedContentViewController" id="3v5-lp-K1i"/>
+                    </connections>
+                </windowController>
+                <customObject id="Aoz-1n-Zi1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823" y="173"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="fNK-Lr-xrT">
+            <objects>
+                <viewController id="Te4-PG-rwh" customClass="HelpViewController" customModule="PaperMetric" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="M7J-rS-HwR">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="350"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <wkWebView wantsLayer="YES" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xst-k9-S3e" customClass="NonScrollingWebView" customModule="PaperMetric" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="350"/>
+                                <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xst-k9-S3e" firstAttribute="top" secondItem="M7J-rS-HwR" secondAttribute="top" id="CQ1-dY-Fnz"/>
+                            <constraint firstItem="xst-k9-S3e" firstAttribute="leading" secondItem="M7J-rS-HwR" secondAttribute="leading" id="SWS-Pg-gew"/>
+                            <constraint firstAttribute="trailing" secondItem="xst-k9-S3e" secondAttribute="trailing" id="qbU-vI-mCm"/>
+                            <constraint firstAttribute="bottom" secondItem="xst-k9-S3e" secondAttribute="bottom" id="u4W-PS-cMX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="helpWebView" destination="xst-k9-S3e" id="tMd-HD-muh"/>
+                    </connections>
+                </viewController>
+                <customObject id="fSg-0p-hES" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1530" y="157"/>
+        </scene>
+        <!--Paper Metric View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="PaperMetric" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="PaperMetricViewController" customModule="PaperMetric" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="824" height="519"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -724,6 +782,9 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <action selector="hitEnter:" target="XfG-lQ-9wD" id="2AV-zE-qay"/>
+                                            </connections>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S9P-0B-3ZN">
                                             <rect key="frame" x="675" y="5" width="96" height="32"/>
@@ -808,11 +869,18 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bs-m6-wa3">
+                                <rect key="frame" x="708" y="13" width="96" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <levelIndicatorCell key="cell" alignment="left" doubleValue="1" maxValue="1" warningValue="2" criticalValue="3" id="mW8-CE-UYf"/>
+                                <color key="fillColor" name="AccentColor"/>
+                            </levelIndicator>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="forAltmetric" destination="3MV-9z-vVn" id="D6Z-SK-8Il"/>
                         <outlet property="forPlumx" destination="MCc-36-Pek" id="GM8-nO-kFy"/>
+                        <outlet property="statusIndication" destination="1bs-m6-wa3" id="Vla-Ry-m1D"/>
                         <outlet property="theDOI" destination="wdL-CC-jW6" id="eb6-Lr-yQx"/>
                     </connections>
                 </viewController>
@@ -821,4 +889,10 @@
             <point key="canvasLocation" x="378" y="754.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="questionmark.circle" catalog="system" width="15" height="15"/>
+        <namedColor name="AccentColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

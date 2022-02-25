@@ -8,18 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		1219ED6727C703FA0075F7D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219ED6627C703FA0075F7D4 /* AppDelegate.swift */; };
-		1219ED6927C703FA0075F7D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219ED6827C703FA0075F7D4 /* ViewController.swift */; };
+		1219ED6927C703FA0075F7D4 /* PaperMetricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1219ED6827C703FA0075F7D4 /* PaperMetricViewController.swift */; };
 		1219ED6B27C703FB0075F7D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1219ED6A27C703FB0075F7D4 /* Assets.xcassets */; };
 		1219ED6E27C703FB0075F7D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1219ED6C27C703FB0075F7D4 /* Main.storyboard */; };
+		1264708727C894730080CB21 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1264708627C894730080CB21 /* Credits.rtf */; };
+		1264709227C8AB100080CB21 /* PaperMetricHelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 1264709127C8AB100080CB21 /* PaperMetricHelp.html */; };
+		1264709427C8ABCE0080CB21 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264709327C8ABCE0080CB21 /* HelpViewController.swift */; };
+		1264709827C8B8380080CB21 /* NonScrollingWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1264709727C8B8380080CB21 /* NonScrollingWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1219ED6327C703FA0075F7D4 /* PaperMetric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaperMetric.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1219ED6627C703FA0075F7D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1219ED6827C703FA0075F7D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1219ED6827C703FA0075F7D4 /* PaperMetricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperMetricViewController.swift; sourceTree = "<group>"; };
 		1219ED6A27C703FB0075F7D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1219ED6D27C703FB0075F7D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1219ED6F27C703FB0075F7D4 /* PaperMetric.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaperMetric.entitlements; sourceTree = "<group>"; };
+		1264708627C894730080CB21 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		1264709127C8AB100080CB21 /* PaperMetricHelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PaperMetricHelp.html; sourceTree = "<group>"; };
+		1264709327C8ABCE0080CB21 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		1264709727C8B8380080CB21 /* NonScrollingWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonScrollingWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				1219ED6627C703FA0075F7D4 /* AppDelegate.swift */,
-				1219ED6827C703FA0075F7D4 /* ViewController.swift */,
+				1219ED6827C703FA0075F7D4 /* PaperMetricViewController.swift */,
+				1264709327C8ABCE0080CB21 /* HelpViewController.swift */,
+				1264709727C8B8380080CB21 /* NonScrollingWebView.swift */,
 				1219ED6A27C703FB0075F7D4 /* Assets.xcassets */,
 				1219ED6C27C703FB0075F7D4 /* Main.storyboard */,
 				1219ED6F27C703FB0075F7D4 /* PaperMetric.entitlements */,
+				1264708627C894730080CB21 /* Credits.rtf */,
+				1264709127C8AB100080CB21 /* PaperMetricHelp.html */,
 			);
 			path = PaperMetric;
 			sourceTree = "<group>";
@@ -119,7 +131,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1264709227C8AB100080CB21 /* PaperMetricHelp.html in Resources */,
 				1219ED6B27C703FB0075F7D4 /* Assets.xcassets in Resources */,
+				1264708727C894730080CB21 /* Credits.rtf in Resources */,
 				1219ED6E27C703FB0075F7D4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1219ED6927C703FA0075F7D4 /* ViewController.swift in Sources */,
+				1219ED6927C703FA0075F7D4 /* PaperMetricViewController.swift in Sources */,
+				1264709827C8B8380080CB21 /* NonScrollingWebView.swift in Sources */,
+				1264709427C8ABCE0080CB21 /* HelpViewController.swift in Sources */,
 				1219ED6727C703FA0075F7D4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,11 +289,11 @@
 				CODE_SIGN_ENTITLEMENTS = PaperMetric/PaperMetric.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HK6R36PLNR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Aidan Cornelius-Bell. Some Rights Reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -300,11 +316,11 @@
 				CODE_SIGN_ENTITLEMENTS = PaperMetric/PaperMetric.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HK6R36PLNR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © Aidan Cornelius-Bell. Some Rights Reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (

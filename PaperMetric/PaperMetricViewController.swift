@@ -9,23 +9,61 @@ import Cocoa
 import Foundation
 import WebKit
 
-class ViewController: NSViewController {
+class PaperMetricViewController: NSViewController {
 
     @IBOutlet weak var theDOI: NSTextField!
     @IBOutlet weak var forPlumx: WKWebView!
     @IBOutlet weak var forAltmetric: WKWebView!
+    @IBOutlet weak var statusIndication: NSLevelIndicator!
+    
+    @IBAction func hitEnter(_ sender: Any) {
+        theLookup(self)
+    }
+    
+    func matches(for regex: String, in text: String) -> [String] {
+
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
     
     
     @IBAction func theLookup(_ sender: Any) {
         
+        if theDOI.stringValue == "" {
+            statusIndication.intValue = 3
+        }
+        
+        // Some empty inits for HTML to fill depending on outcome
         var plumHtml = ""
         var amHtml = ""
+        var doiString = theDOI.stringValue
         
-        let doiString = theDOI.stringValue
-        let r = doiString.startIndex..<doiString.endIndex
+        // Set up our regular expression for DOI
         let pattern = #"\b(10[.][0-9]{4,}(?:[.][0-9]+)*\/(?:(?!["&\'<>])\S)+)\b"#
-        let r2 = doiString.range(of: pattern, options: .regularExpression)
         
+        // Clean any pasted DOI URL up
+        let doiStringClean = matches(for: pattern, in: doiString)
+        // Now unwrap the result of that function
+        if doiStringClean.first != nil {
+            theDOI.stringValue = doiStringClean.first!
+            doiString = doiStringClean.first!
+            statusIndication.intValue = 1
+        } else {
+            statusIndication.intValue = 2
+        }
+        
+        // Some validation with regex
+        let r = doiString.startIndex..<doiString.endIndex
+        let r2 = doiString.range(of: pattern, options: .regularExpression)
         
         // a regex to match DOI
         if r2 == r {
@@ -36,9 +74,13 @@ class ViewController: NSViewController {
             // definitions for the AM API
             amHtml = "<html><head><style>body{font-family: system-ui, -apple-system;}</style><script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script></head><body><div data-badge-details='right' data-badge-type='donut' data-doi='" + doiString + "' class='altmetric-embed'></div></body></html>"
             
+            statusIndication.intValue = 1
+            
         } else {
             plumHtml = "<html><head><style>body{background:rgb(52,50,51);}</style></head><body><h3 style='margin-top:47vh;text-align:center;color:rgb(222,221,221);font-family: system-ui, -apple-system;'>DOI failed to match pattern</h3></body></html>"
             amHtml = "<html><head><style>body{background:rgb(52,50,51);}</style></head><body><h3 style='margin-top:47vh;text-align:center;color:rgb(222,221,221);font-family: system-ui, -apple-system;'>DOI failed to match pattern</h3></body></html>"
+            
+            statusIndication.intValue = 3
         }
         
         
@@ -50,6 +92,8 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        statusIndication.intValue = 0
         
         forPlumx.reload()
         forAltmetric.reload()
