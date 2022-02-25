@@ -90,6 +90,8 @@ class PaperMetricViewController: NSViewController {
         forAltmetric.loadHTMLString(amHtml, baseURL: URL(string: "https://apple.com/")!)
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,3 +117,35 @@ class PaperMetricViewController: NSViewController {
 
 }
 
+extension PaperMetricViewController: WKNavigationDelegate {
+    
+    // This makes sure that if we want to view the details we can open in Safari (or whatever) rather than a tiny window in the app
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        // makes sure we have received a link
+        if navigationAction.navigationType == .linkActivated {
+            
+            // makes sure we have a url
+            guard let url = navigationAction.request.url else {
+                decisionHandler(.allow)
+                return
+            }
+
+            // some rudamentary verification (i.e. it can actually open in a browser)
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            
+            if components?.scheme == "http" || components?.scheme == "https" {
+                // And out we go....
+                NSWorkspace.shared.open(url)
+                // now stop further action in the webview
+                decisionHandler(.cancel)
+            } else {
+                // we'll allow this, but who knows where it's going?
+                decisionHandler(.allow)
+            }
+        } else {
+            // this is just for every other kind of event (unlikely to be triggered)
+            decisionHandler(.allow)
+        }
+    }
+}

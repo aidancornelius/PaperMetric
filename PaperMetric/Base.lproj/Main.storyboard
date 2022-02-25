@@ -827,6 +827,9 @@
                                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                                 <wkPreferences key="preferences"/>
                                             </wkWebViewConfiguration>
+                                            <connections>
+                                                <outlet property="navigationDelegate" destination="XfG-lQ-9wD" id="lsK-0i-sLn"/>
+                                            </connections>
                                         </wkWebView>
                                     </subviews>
                                     <constraints>
@@ -850,6 +853,9 @@
                                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                                 <wkPreferences key="preferences"/>
                                             </wkWebViewConfiguration>
+                                            <connections>
+                                                <outlet property="navigationDelegate" destination="XfG-lQ-9wD" id="WvE-Tc-dVO"/>
+                                            </connections>
                                         </wkWebView>
                                     </subviews>
                                     <constraints>
